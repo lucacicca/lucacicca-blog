@@ -30,10 +30,10 @@
 					<?php
 					wp_list_categories( array(
 						'title_li'     => '',
-						'orderby'      => 'count',
-						'order'        => 'DESC',
+						'orderby'      => 'name',
+						'order'        => 'ASC',
 						'show_count'   => false,
-						'hierarchical' => true,
+						'hierarchical' => false, // elenco piatto: padri e figlie come voci fratelle (il flusso orizzontale non gestisce l'annidamento)
 					) );
 					?>
 				</ul>

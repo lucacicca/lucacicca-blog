@@ -1,10 +1,13 @@
 # CHANGELOG
 
+## [1.7] — 2 novembre 2026
+- Fix categorie nel footer: le sottocategorie (es. "informazione playlist" figlia di "musica") rompevano il layout perché `wp_list_categories` gerarchico annida le figlie in una ul interna che il flusso orizzontale non gestisce. Ora l'elenco è **piatto** (`hierarchical => false`, ordinamento alfabetico): padri e figlie come voci fratelle, tutte indivisibili su una riga.
+
 ## [1.6] — 2 novembre 2026
-- Fix elenco categorie/anni nel footer: le voci con nome lungo (es. "informazione playlist") si spezzavano su due righe; ora ogni voce è indivisibile (`white-space: nowrap`) e il flusso va a capo solo tra le voci. Stesso fix per le liste dei widget.
+- Fix elenco categorie/anni nel footer: ogni voce indivisibile (`white-space: nowrap`), a-capo solo tra le voci. Stesso fix per i widget.
 
 ## [1.5] — 2 novembre 2026
-- Miniature in home/archivi a piena colonna responsive (size `large`, lazy); footer archivi anni + categorie in flusso orizzontale.
+- Miniature in home/archivi a piena colonna responsive; footer archivi anni + categorie in flusso orizzontale.
 - Archivi data: fix lato Yoast SEO ("Disabilita gli archivi basati sulla data" OFF) — i 301 alla home erano di Yoast.
 
 ## [1.4] — 2 novembre 2026

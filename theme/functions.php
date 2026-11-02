@@ -1,12 +1,12 @@
 <?php
 /**
  * Lucacicca Reader — functions.php
- * Tema minimale per la lettura. Versione: 1.6
+ * Tema minimale per la lettura. Versione: 1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'LCDR_VERSION', '1.6' );
+define( 'LCDR_VERSION', '1.7' );
 
 /* ---- Setup ---- */
 function lcdr_setup() {
@@ -39,7 +39,7 @@ function lcdr_widgets_init() {
 }
 add_action( 'widgets_init', 'lcdr_widgets_init' );
 
-/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.6) ---- */
+/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.7) ---- */
 function lcdr_enqueue_style() {
 	wp_enqueue_style( 'lcdr-style', get_stylesheet_uri(), array(), LCDR_VERSION );
 }
