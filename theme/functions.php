@@ -1,12 +1,12 @@
 <?php
 /**
  * Lucacicca Reader — functions.php
- * Tema minimale per la lettura. Versione: 1.1
+ * Tema minimale per la lettura. Versione: 1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'LCDR_VERSION', '1.1' );
+define( 'LCDR_VERSION', '1.2' );
 
 /* ---- Setup ---- */
 function lcdr_setup() {
@@ -25,7 +25,21 @@ function lcdr_content_width() {
 }
 add_action( 'after_setup_theme', 'lcdr_content_width', 0 );
 
-/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.1) ---- */
+/* ---- Widget area nel footer (nessuna sidebar laterale) ---- */
+function lcdr_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Footer (sotto il contenuto)', 'lucacicca-reader' ),
+		'id'            => 'footer-1',
+		'description'   => __( 'Widget mostrati in fondo alla pagina, sotto il contenuto, a colonna piena.', 'lucacicca-reader' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'lcdr_widgets_init' );
+
+/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.2) ---- */
 function lcdr_enqueue_style() {
 	wp_enqueue_style( 'lcdr-style', get_stylesheet_uri(), array(), LCDR_VERSION );
 }
@@ -33,7 +47,6 @@ add_action( 'wp_enqueue_scripts', 'lcdr_enqueue_style' );
 
 /* ---- Leggerezza: via lo script superfluo ---- */
 
-// Emoji script inutili su un blog testuale
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -42,7 +55,6 @@ remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 
-// Il tema non usa jQuery frontend
 function lcdr_dequeue_jquery() {
 	if ( ! is_admin() ) {
 		wp_dequeue_script( 'jquery' );

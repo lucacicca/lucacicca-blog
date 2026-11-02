@@ -3,18 +3,18 @@ Theme Name: Lucacicca Reader
 Theme URI: https://www.lucacicca.it
 Author: Luca Ciccarelli
 Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, zero Javascript superfluo. Dark mode con toggle.
-Version: 1.1
+Version: 1.2
 License: GNU General Public License v2 or later
 Text Domain: lucacicca-reader
 */
 
 /* ============ Palette Kindle-like ============ */
 :root {
-  --bg: #f6f4ef;            /* bianco spento, caldo */
-  --fg: #2e2a26;            /* grigio caldo scuro */
-  --fg-soft: #6b645c;       /* testo secondario */
-  --line: #d9d4ca;          /* separatori */
-  --link: #4a5d8a;          /* blu inchiostro spento */
+  --bg: #f6f4ef;
+  --fg: #2e2a26;
+  --fg-soft: #6b645c;
+  --line: #d9d4ca;
+  --link: #4a5d8a;
   --accent: #8a6d3b;
   --maxw: 38rem;
 }
@@ -38,16 +38,13 @@ body {
   padding: 0 1rem;
   background: var(--bg);
   color: var(--fg);
-  /* Stack di sistema, peso light: su Windows = Segoe UI Light,
-     su Mac = Helvetica Neue Light. Effetto simile ad Amazon Ember Light. */
   font-family: "Segoe UI", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Ubuntu", Roboto, Arial, sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;        /* 18px: comfort su mobile */
+  font-size: 1.125rem;
   line-height: 1.7;
   word-wrap: break-word;
 }
 
-/* Grassetto e titoli restano pieni per contrasto (stile Kindle) */
 b, strong, th { font-weight: 600; }
 
 a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -199,7 +196,7 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
   border: none;
 }
 
-/* Tabelle (rare, ma dai 22 anni di post possono arrivare) */
+/* Tabelle */
 .entry-content table {
   width: 100%;
   border-collapse: collapse;
@@ -222,7 +219,6 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
 .page-numbers { padding: 0 0.3em; }
 .page-numbers.current { color: var(--fg-soft); text-decoration: none; }
 
-/* Paginazione post lunghi */
 .page-links { margin: 1.5em 0; }
 
 /* ============ Commenti ============ */
@@ -272,6 +268,36 @@ footer.site-footer {
   font-size: 0.9rem;
   color: var(--fg-soft);
 }
+
+/* Widget area del footer: colonna piena, widget impilati */
+.footer-widgets {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.footer-widgets .widget { margin-bottom: 1.25rem; }
+.footer-widgets .widget:last-child { margin-bottom: 0; }
+.widget-title {
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+  color: var(--fg);
+  font-weight: 600;
+}
+.widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 1.25rem;
+}
+.widget ul li { margin: 0; }
+.widget a { text-decoration: none; }
+.widget a:hover { text-decoration: underline; }
+/* Alcuni widget (es. Meta) rendono liste verticali: restano leggibili comunque */
+.widget ul ul { gap: 0.15rem 0.75rem; padding-left: 0.75rem; }
+.widget img { display: inline; max-height: 1.5rem; width: auto; }
+
 .archive-years h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--fg); }
 .archive-years ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
 .archive-years a { text-decoration: none; }
@@ -299,10 +325,7 @@ footer.site-footer {
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
-.skip-link {
-  position: absolute;
-  left: -9999px;
-}
+.skip-link { position: absolute; left: -9999px; }
 .skip-link:focus {
   left: 0.5rem; top: 0.5rem;
   z-index: 100;
@@ -312,7 +335,7 @@ footer.site-footer {
 }
 :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 
-/* Print: come un vero diario su carta */
+/* Print */
 @media print {
   body { background: #fff; color: #000; font-size: 11pt; font-weight: 400; }
   header.site-header, footer.site-footer, .comments-area, .nav-links, .pagination { display: none; }
