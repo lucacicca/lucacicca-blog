@@ -1,0 +1,112 @@
+<?php
+/**
+ * Lucacicca Reader — functions.php
+ * Tema minimale per la lettura. Versione: 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+define( 'LCDR_VERSION', '1.0' );
+
+/* ---- Setup ---- */
+function lcdr_setup() {
+	load_theme_textdomain( 'lucacicca-reader', get_template_directory() . '/languages' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
+	add_theme_support( 'responsive-embeds' );
+	register_nav_menus( array( 'primary' => __( 'Menu principale', 'lucacicca-reader' ) ) );
+}
+add_action( 'after_setup_theme', 'lcdr_setup' );
+
+function lcdr_content_width() {
+	$GLOBALS['content_width'] = 640;
+}
+add_action( 'after_setup_theme', 'lcdr_content_width', 0 );
+
+/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.0) ---- */
+function lcdr_enqueue_style() {
+	wp_enqueue_style( 'lcdr-style', get_stylesheet_uri(), array(), LCDR_VERSION );
+}
+add_action( 'wp_enqueue_scripts', 'lcdr_enqueue_style' );
+
+/* ---- Leggerezza: via lo script superfluo ---- */
+
+// Emoji script inutili su un blog testuale
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
+// Il tema non usa jQuery frontend
+function lcdr_dequeue_jquery() {
+	if ( ! is_admin() ) {
+		wp_dequeue_script( 'jquery' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'lcdr_dequeue_jquery', 100 );
+
+/* ---- Dark mode: toggle manuale, prima paint senza flash ---- */
+function lcdr_theme_boot() {
+	?>
+	<script>
+	(function () {
+		try {
+			var t = localStorage.getItem('lcdr-theme');
+			if (t) document.documentElement.setAttribute('data-theme', t);
+		} catch (e) {}
+	})();
+	</script>
+	<?php
+}
+add_action( 'wp_head', 'lcdr_theme_boot', 1 );
+
+function lcdr_theme_toggle_script() {
+	?>
+	<script>
+	(function () {
+		var btn = document.getElementById('lcdr-toggle');
+		if (!btn) return;
+		btn.addEventListener('click', function () {
+			var h = document.documentElement;
+			var cur = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			h.setAttribute('data-theme', cur);
+			try { localStorage.setItem('lcdr-theme', cur); } catch (e) {}
+			btn.setAttribute('aria-pressed', cur === 'dark' ? 'true' : 'false');
+			btn.textContent = cur === 'dark' ? '☼' : '☾';
+		});
+		var cur = document.documentElement.getAttribute('data-theme') || 'light';
+		btn.setAttribute('aria-pressed', cur === 'dark' ? 'true' : 'false');
+		btn.textContent = cur === 'dark' ? '☼' : '☾';
+	})();
+	</script>
+	<?php
+}
+add_action( 'wp_footer', 'lcdr_theme_toggle_script' );
+
+/* ---- Excerpt ---- */
+function lcdr_excerpt_more() {
+	return '…';
+}
+add_filter( 'excerpt_more', 'lcdr_excerpt_more' );
+
+function lcdr_excerpt_length() {
+	return 40;
+}
+add_filter( 'excerpt_length', 'lcdr_excerpt_length' );
+
+/* ---- Archivio per anni nel footer ---- */
+function lcdr_footer_years() {
+	return wp_get_archives( array(
+		'type'            => 'yearly',
+		'format'          => 'custom',
+		'before'          => '<li>',
+		'after'           => '</li>',
+		'show_post_count' => false,
+		'echo'            => false,
+	) );
+}

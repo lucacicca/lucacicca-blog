@@ -1,0 +1,314 @@
+/*
+Theme Name: Lucacicca Reader
+Theme URI: https://www.lucacicca.it
+Author: Luca Ciccarelli
+Description: Tema minimale per la lettura, stile e-reader: una colonna, serif, alto contrasto, zero Javascript superfluo. Dark mode con toggle.
+Version: 1.0
+License: GNU General Public License v2 or later
+Text Domain: lucacicca-reader
+*/
+
+/* ============ Palette Kindle-like ============ */
+:root {
+  --bg: #f6f4ef;            /* bianco spento, caldo */
+  --fg: #2e2a26;            /* grigio caldo scuro */
+  --fg-soft: #6b645c;       /* testo secondario */
+  --line: #d9d4ca;          /* separatori */
+  --link: #4a5d8a;          /* blu inchiostro spento */
+  --accent: #8a6d3b;
+  --maxw: 38rem;
+}
+
+html[data-theme="dark"] {
+  --bg: #1c1b19;
+  --fg: #c9c4bb;
+  --fg-soft: #8a847b;
+  --line: #3a3733;
+  --link: #9fb3d9;
+  --accent: #c0a06a;
+}
+
+/* ============ Base ============ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 1rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 1.125rem;        /* 18px: comfort su mobile */
+  line-height: 1.7;
+  word-wrap: break-word;
+}
+
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+
+img, video { max-width: 100%; height: auto; }
+
+/* ============ Struttura ============ */
+.wrap { max-width: var(--maxw); margin: 0 auto; }
+
+header.site-header {
+  padding: 1.5rem 0 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.site-title a { color: var(--fg); text-decoration: none; }
+
+.site-description { margin: 0; font-size: 0.9rem; color: var(--fg-soft); }
+
+.header-tools { margin-left: auto; display: flex; align-items: center; gap: 0.75rem; }
+
+/* Ricerca minimale */
+.search-form { display: flex; }
+.search-form input[type="search"] {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--fg);
+  max-width: 9rem;
+}
+.search-form button {
+  font: inherit;
+  font-size: 0.9rem;
+  border: none;
+  background: none;
+  color: var(--fg-soft);
+  cursor: pointer;
+  padding: 0.25rem 0.25rem;
+}
+
+/* Toggle dark mode */
+#lcdr-toggle {
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: none;
+  color: var(--fg);
+  cursor: pointer;
+  padding: 0.2rem 0.55rem;
+}
+
+nav.site-nav { padding: 0.5rem 0; font-size: 0.95rem; }
+nav.site-nav ul { margin: 0; padding: 0; list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ============ Contenuto ============ */
+main { padding: 1.5rem 0 3rem; }
+
+article, .page-content {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+article:last-of-type { border-bottom: none; }
+
+.entry-title {
+  font-size: 1.45rem;
+  line-height: 1.3;
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+}
+.entry-title a { color: var(--fg); text-decoration: none; }
+.entry-title a:hover { color: var(--link); }
+
+.entry-meta {
+  font-size: 0.85rem;
+  color: var(--fg-soft);
+  margin-bottom: 1.25rem;
+}
+.entry-meta a { color: inherit; }
+
+.entry-content p { margin: 0 0 1.1em; }
+.entry-content > p:first-of-type { margin-top: 0; }
+
+blockquote {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 3px solid var(--line);
+  color: var(--fg-soft);
+  font-style: italic;
+}
+
+code, pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  background: rgba(0,0,0,0.04);
+}
+html[data-theme="dark"] code, html[data-theme="dark"] pre { background: rgba(255,255,255,0.06); }
+pre { padding: 0.75rem; overflow-x: auto; border: 1px solid var(--line); border-radius: 3px; }
+
+hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
+
+/* Didascalie editor classico */
+.wp-caption { max-width: 100%; margin: 1.5em 0; }
+.wp-caption img { display: block; margin: 0 auto; }
+.wp-caption-text, figcaption {
+  font-size: 0.85rem;
+  color: var(--fg-soft);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.alignleft, img.alignleft { float: left; margin: 0.4em 1.2em 0.8em 0; }
+.alignright, img.alignright { float: right; margin: 0.4em 0 0.8em 1.2em; }
+.aligncenter, img.aligncenter { display: block; margin: 0.4em auto 0.8em; }
+@media (max-width: 600px) {
+  .alignleft, .alignright, img.alignleft, img.alignright { float: none; display: block; margin: 0.4em auto 0.8em; }
+}
+
+/* Video responsivi (iframe incollati con editor classico) */
+.entry-content iframe,
+.entry-content video,
+.entry-content object,
+.entry-content embed { max-width: 100%; }
+
+.entry-content iframe[src*="youtube"],
+.entry-content iframe[src*="youtu.be"],
+.entry-content iframe[src*="youtube-nocookie"] {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+}
+
+/* Tabelle (rare, ma dai 22 anni di post possono arrivare) */
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin: 1.5em 0;
+}
+.entry-content th, .entry-content td { border: 1px solid var(--line); padding: 0.4em 0.6em; text-align: left; }
+
+/* Navigazione post */
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+  margin: 2rem 0;
+}
+.nav-links a { text-decoration: none; }
+
+.pagination, .wp-block-query-pagination { margin: 2rem 0; font-size: 0.95rem; }
+.page-numbers { padding: 0 0.3em; }
+.page-numbers.current { color: var(--fg-soft); text-decoration: none; }
+
+/* Paginazione post lunghi */
+.page-links { margin: 1.5em 0; }
+
+/* ============ Commenti ============ */
+.comments-area { margin-top: 2.5rem; }
+.comments-title, .comment-reply-title { font-size: 1.15rem; }
+
+.comment-list { list-style: none; margin: 0; padding: 0; }
+.comment-list .comment {
+  border-top: 1px solid var(--line);
+  padding: 1rem 0 0.5rem;
+}
+.comment-list .children { list-style: none; margin-top: 1rem; padding-left: 1.25rem; }
+
+.comment-meta { font-size: 0.85rem; color: var(--fg-soft); margin-bottom: 0.5rem; }
+.comment-author .fn { color: var(--fg); font-style: normal; font-weight: 600; }
+.comment-content p { margin: 0 0 0.75em; }
+.comment-content img { max-width: 100%; }
+.comment-form p { margin-bottom: 0.9rem; }
+.comment-form label { display: block; font-size: 0.85rem; color: var(--fg-soft); margin-bottom: 0.2rem; }
+.comment-form input[type="text"], .comment-form input[type="email"], .comment-form input[type="url"], .comment-form textarea {
+  font: inherit;
+  font-size: 1rem;
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--fg);
+}
+.comment-form input[type="submit"] {
+  font: inherit;
+  padding: 0.4rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+}
+.comment-form input[type="submit"]:hover { background: var(--line); }
+.comment-form code, .comment-form kbd { font-size: 0.85em; }
+.logged-in-as, .comment-notes, .form-allowed-tags { font-size: 0.85rem; color: var(--fg-soft); }
+
+/* ============ Footer ============ */
+footer.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.5rem 0 3rem;
+  font-size: 0.9rem;
+  color: var(--fg-soft);
+}
+.archive-years h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--fg); }
+.archive-years ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+.archive-years a { text-decoration: none; }
+.archive-years a:hover { text-decoration: underline; }
+.site-footer .sep { margin: 0 0.4rem; }
+
+/* ============ Archivio / risultati / 404 ============ */
+.archive-title, .search-results .page-title, .no-results h2 { font-size: 1.15rem; margin: 0 0 2rem; color: var(--fg-soft); }
+.no-results p { margin-bottom: 1em; }
+
+/* Galleries editor classico */
+.gallery { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5em 0; }
+.gallery-item { margin: 0; }
+.gallery-columns-2 .gallery-item { width: calc(50% - 0.5rem); }
+.gallery-columns-3 .gallery-item { width: calc(33.333% - 0.5rem); }
+.gallery-columns-4 .gallery-item { width: calc(25% - 0.5rem); }
+.gallery-item img { display: block; }
+.gallery-caption { font-size: 0.8rem; }
+
+/* Accessibilita' */
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 0.5rem; top: 0.5rem;
+  z-index: 100;
+  background: var(--bg);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+}
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+/* Print: come un vero diario su carta */
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  header.site-header, footer.site-footer, .comments-area, .nav-links, .pagination { display: none; }
+  a { color: #000; text-decoration: none; }
+}
