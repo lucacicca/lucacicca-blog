@@ -2,8 +2,8 @@
 Theme Name: Lucacicca Reader
 Theme URI: https://www.lucacicca.it
 Author: Luca Ciccarelli
-Description: Tema minimale per la lettura, stile e-reader: una colonna, serif, alto contrasto, zero Javascript superfluo. Dark mode con toggle.
-Version: 1.0
+Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, zero Javascript superfluo. Dark mode con toggle.
+Version: 1.1
 License: GNU General Public License v2 or later
 Text Domain: lucacicca-reader
 */
@@ -38,11 +38,17 @@ body {
   padding: 0 1rem;
   background: var(--bg);
   color: var(--fg);
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  /* Stack di sistema, peso light: su Windows = Segoe UI Light,
+     su Mac = Helvetica Neue Light. Effetto simile ad Amazon Ember Light. */
+  font-family: "Segoe UI", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Ubuntu", Roboto, Arial, sans-serif;
+  font-weight: 300;
   font-size: 1.125rem;        /* 18px: comfort su mobile */
   line-height: 1.7;
   word-wrap: break-word;
 }
+
+/* Grassetto e titoli restano pieni per contrasto (stile Kindle) */
+b, strong, th { font-weight: 600; }
 
 a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--accent); }
@@ -308,7 +314,7 @@ footer.site-footer {
 
 /* Print: come un vero diario su carta */
 @media print {
-  body { background: #fff; color: #000; font-size: 11pt; }
+  body { background: #fff; color: #000; font-size: 11pt; font-weight: 400; }
   header.site-header, footer.site-footer, .comments-area, .nav-links, .pagination { display: none; }
   a { color: #000; text-decoration: none; }
 }
