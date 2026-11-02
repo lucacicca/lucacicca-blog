@@ -2,10 +2,11 @@
 Theme Name: Lucacicca Reader
 Theme URI: https://www.lucacicca.it
 Author: Luca Ciccarelli
-Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, featured image di impatto nei post e in home/archivi, post correlati. Dark mode con toggle.
-Version: 1.6
+Description: Tema e-reader per blog di lettura: una colonna, tipografia light ad alto contrasto, featured image a piena colonna, miniature in home e archivi, categorie e tag, post correlati con miniatura, dark mode con toggle. Zero JavaScript superfluo, nessuna richiesta esterna.
+Version: 1.8
 License: GNU General Public License v2 or later
 Text Domain: lucacicca-reader
+Tags: blog, one-column, custom-menu, featured-images, translation-ready
 */
 
 /* ============ Palette Kindle-like ============ */
