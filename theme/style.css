@@ -3,7 +3,7 @@ Theme Name: Lucacicca Reader
 Theme URI: https://www.lucacicca.it
 Author: Luca Ciccarelli
 Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, featured image di impatto nei post e in home/archivi, post correlati. Dark mode con toggle.
-Version: 1.5
+Version: 1.6
 License: GNU General Public License v2 or later
 Text Domain: lucacicca-reader
 */
@@ -363,7 +363,7 @@ footer.site-footer {
   flex-wrap: wrap;
   gap: 0.15rem 1.25rem;
 }
-.widget ul li { margin: 0; }
+.widget ul li { margin: 0; white-space: nowrap; }
 .widget a { text-decoration: none; }
 .widget a:hover { text-decoration: underline; }
 .widget ul ul { gap: 0.15rem 0.75rem; padding-left: 0.75rem; }
@@ -382,7 +382,8 @@ footer.site-footer {
   flex-wrap: wrap;
   gap: 0.15rem 1.1rem;
 }
-.archive-years ul li, .footer-cats ul li { margin: 0; }
+/* Ogni voce resta indivisibile: il flusso va a capo SOLO tra le voci */
+.archive-years ul li, .footer-cats ul li { margin: 0; white-space: nowrap; }
 .archive-years a, .footer-cats a { text-decoration: none; }
 .archive-years a:hover, .footer-cats a:hover { text-decoration: underline; }
 .site-footer .sep { margin: 0 0.4rem; }
