@@ -45,6 +45,12 @@ get_header();
 					<?php endif; ?>
 				</p>
 
+				<?php if ( is_singular() && has_post_thumbnail() ) : ?>
+					<figure class="lcdr-featured">
+						<?php the_post_thumbnail( 'large', array( 'fetchpriority' => 'high' ) ); ?>
+					</figure>
+				<?php endif; ?>
+
 				<div class="entry-content">
 					<?php
 					the_content( __( 'Continua a leggere &rarr;', 'lucacicca-reader' ) );
