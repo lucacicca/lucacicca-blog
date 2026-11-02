@@ -1,12 +1,12 @@
 <?php
 /**
  * Lucacicca Reader — functions.php
- * Tema minimale per la lettura. Versione: 1.3
+ * Tema minimale per la lettura. Versione: 1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'LCDR_VERSION', '1.3' );
+define( 'LCDR_VERSION', '1.4' );
 
 /* ---- Setup ---- */
 function lcdr_setup() {
@@ -39,7 +39,7 @@ function lcdr_widgets_init() {
 }
 add_action( 'widgets_init', 'lcdr_widgets_init' );
 
-/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.3) ---- */
+/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.4) ---- */
 function lcdr_enqueue_style() {
 	wp_enqueue_style( 'lcdr-style', get_stylesheet_uri(), array(), LCDR_VERSION );
 }
@@ -121,4 +121,46 @@ function lcdr_footer_years() {
 		'show_post_count' => false,
 		'echo'            => false,
 	) );
+}
+
+/* ---- Post correlati: stessa categoria, 3 post, miniatura + titolo ---- */
+function lcdr_related_posts() {
+	if ( ! is_singular( 'post' ) ) {
+		return '';
+	}
+
+	$cats = wp_get_post_categories( get_the_ID() );
+	if ( empty( $cats ) ) {
+		return '';
+	}
+
+	$related = new WP_Query( array(
+		'category__in'   => $cats,
+		'post__not_in'   => array( get_the_ID() ),
+		'posts_per_page' => 3,
+		'orderby'        => 'rand',
+		'no_found_rows'  => true,
+		'post_status'    => 'publish',
+	) );
+
+	if ( ! $related->have_posts() ) {
+		return '';
+	}
+
+	$out = '<section class="related-posts"><h2>' . esc_html__( 'Post correlati', 'lucacicca-reader' ) . '</h2><ul class="related-list">';
+	foreach ( $related->posts as $p ) {
+		$thumb = get_the_post_thumbnail( $p->ID, 'thumbnail' );
+		$out  .= '<li><a href="' . esc_url( get_permalink( $p->ID ) ) . '">';
+		if ( $thumb ) {
+			$out .= $thumb;
+		} else {
+			$out .= '<img class="related-nothumb" src="" alt="" style="display:none">';
+		}
+		$out .= '<span class="related-title">' . esc_html( get_the_title( $p->ID ) ) . '</span></a></li>';
+	}
+	$out .= '</ul></section>';
+
+	wp_reset_postdata();
+
+	return $out;
 }

@@ -30,6 +30,12 @@ get_header();
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+				<?php if ( ! is_singular() && has_post_thumbnail() ) : ?>
+					<a class="lcdr-thumb" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
+						<?php the_post_thumbnail( 'thumbnail', array( 'loading' => 'lazy' ) ); ?>
+					</a>
+				<?php endif; ?>
+
 				<h1 class="entry-title">
 					<?php if ( is_singular() ) : ?>
 						<?php the_title(); ?>
@@ -62,6 +68,25 @@ get_header();
 				</div>
 
 				<?php if ( is_singular() ) : ?>
+
+					<?php if ( has_category() || has_tag() ) : ?>
+						<p class="entry-tax">
+							<?php if ( has_category() ) : ?>
+								<span class="tax-label"><?php _e( 'Categorie:', 'lucacicca-reader' ); ?></span>
+								<?php the_category( ', ' ); ?>
+							<?php endif; ?>
+							<?php if ( has_category() && has_tag() ) : ?>
+								<span class="tax-sep">|</span>
+							<?php endif; ?>
+							<?php if ( has_tag() ) : ?>
+								<span class="tax-label"><?php _e( 'Tag:', 'lucacicca-reader' ); ?></span>
+								<?php the_tags( '', ', ' ); ?>
+							<?php endif; ?>
+						</p>
+					<?php endif; ?>
+
+					<?php echo lcdr_related_posts(); ?>
+
 					<nav class="nav-links">
 						<?php
 						$prev = get_previous_post();

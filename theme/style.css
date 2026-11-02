@@ -2,8 +2,8 @@
 Theme Name: Lucacicca Reader
 Theme URI: https://www.lucacicca.it
 Author: Luca Ciccarelli
-Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, featured image di impatto nei post. Dark mode con toggle.
-Version: 1.3
+Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, featured image di impatto nei post, miniature in home/archivi, post correlati. Dark mode con toggle.
+Version: 1.4
 License: GNU General Public License v2 or later
 Text Domain: lucacicca-reader
 */
@@ -143,6 +143,18 @@ article:last-of-type { border-bottom: none; }
 }
 .entry-meta a { color: inherit; }
 
+/* Miniature in home/archivi */
+a.lcdr-thumb {
+  display: block;
+  margin: 0 0 0.75rem;
+}
+a.lcdr-thumb img {
+  display: block;
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
+
 /* ============ Featured image di impatto (post singolo) ============ */
 .lcdr-featured {
   margin: 0 0 1.5rem;
@@ -222,6 +234,47 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
   margin: 1.5em 0;
 }
 .entry-content th, .entry-content td { border: 1px solid var(--line); padding: 0.4em 0.6em; text-align: left; }
+
+/* Categorie e tag sotto il post */
+.entry-tax {
+  font-size: 0.9rem;
+  color: var(--fg-soft);
+  margin: 0 0 1.5rem;
+}
+.entry-tax .tax-label { font-weight: 600; color: var(--fg); }
+.entry-tax a { text-decoration: none; }
+.entry-tax a:hover { text-decoration: underline; }
+.entry-tax .tax-sep { margin: 0 0.5rem; color: var(--line); }
+
+/* ============ Post correlati ============ */
+.related-posts { margin: 2rem 0 0; }
+.related-posts h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+.related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.related-list li {
+  width: calc(33.333% - 0.67rem);
+  min-width: 100px;
+  margin: 0;
+}
+.related-list a { text-decoration: none; color: var(--fg-soft); display: block; }
+.related-list a:hover { color: var(--link); }
+.related-list img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.35rem;
+}
+.related-list .related-title { font-size: 0.9rem; line-height: 1.3; }
 
 /* Navigazione post */
 .nav-links {
@@ -315,10 +368,17 @@ footer.site-footer {
 .widget ul ul { gap: 0.15rem 0.75rem; padding-left: 0.75rem; }
 .widget img { display: inline; max-height: 1.5rem; width: auto; }
 
-.archive-years h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--fg); }
-.archive-years ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
-.archive-years a { text-decoration: none; }
-.archive-years a:hover { text-decoration: underline; }
+/* Blocchi archivio anni + categorie nel footer */
+.footer-cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+  margin-bottom: 1.5rem;
+}
+.archive-years h2, .footer-cats h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--fg); font-weight: 600; }
+.archive-years ul, .footer-cats ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+.archive-years a, .footer-cats a { text-decoration: none; }
+.archive-years a:hover, .footer-cats a:hover { text-decoration: underline; }
 .site-footer .sep { margin: 0 0.4rem; }
 
 /* ============ Archivio / risultati / 404 ============ */
@@ -355,6 +415,6 @@ footer.site-footer {
 /* Print */
 @media print {
   body { background: #fff; color: #000; font-size: 11pt; font-weight: 400; }
-  header.site-header, footer.site-footer, .comments-area, .nav-links, .pagination { display: none; }
+  header.site-header, footer.site-footer, .comments-area, .nav-links, .pagination, .related-posts { display: none; }
   a { color: #000; text-decoration: none; }
 }
