@@ -32,7 +32,7 @@ get_header();
 
 				<?php if ( ! is_singular() && has_post_thumbnail() ) : ?>
 					<a class="lcdr-thumb" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
-						<?php the_post_thumbnail( 'thumbnail', array( 'loading' => 'lazy' ) ); ?>
+						<?php the_post_thumbnail( 'large', array( 'loading' => 'lazy' ) ); ?>
 					</a>
 				<?php endif; ?>
 

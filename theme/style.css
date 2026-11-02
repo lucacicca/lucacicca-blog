@@ -2,8 +2,8 @@
 Theme Name: Lucacicca Reader
 Theme URI: https://www.lucacicca.it
 Author: Luca Ciccarelli
-Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, featured image di impatto nei post, miniature in home/archivi, post correlati. Dark mode con toggle.
-Version: 1.4
+Description: Tema minimale per la lettura, stile e-reader: una colonna, sans light ad alto contrasto, featured image di impatto nei post e in home/archivi, post correlati. Dark mode con toggle.
+Version: 1.5
 License: GNU General Public License v2 or later
 Text Domain: lucacicca-reader
 */
@@ -143,16 +143,17 @@ article:last-of-type { border-bottom: none; }
 }
 .entry-meta a { color: inherit; }
 
-/* Miniature in home/archivi */
+/* Miniature responsive in home/archivi: piena colonna, come nel post */
 a.lcdr-thumb {
   display: block;
-  margin: 0 0 0.75rem;
+  margin: 0 0 1rem;
 }
 a.lcdr-thumb img {
   display: block;
-  width: 150px;
+  width: 100%;
   max-width: 100%;
   height: auto;
+  line-height: 0;
 }
 
 /* ============ Featured image di impatto (post singolo) ============ */
@@ -368,15 +369,20 @@ footer.site-footer {
 .widget ul ul { gap: 0.15rem 0.75rem; padding-left: 0.75rem; }
 .widget img { display: inline; max-height: 1.5rem; width: auto; }
 
-/* Blocchi archivio anni + categorie nel footer */
-.footer-cols {
+/* Archivi anni + categorie: flusso orizzontale con a-capo automatico */
+.footer-cols { margin-bottom: 1.5rem; }
+.archive-years, .footer-cats { margin-bottom: 1.25rem; }
+.archive-years:last-child, .footer-cats:last-child { margin-bottom: 0; }
+.archive-years h2, .footer-cats h2 { font-size: 1rem; margin: 0 0 0.4rem; color: var(--fg); font-weight: 600; }
+.archive-years ul, .footer-cats ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem 3rem;
-  margin-bottom: 1.5rem;
+  gap: 0.15rem 1.1rem;
 }
-.archive-years h2, .footer-cats h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--fg); font-weight: 600; }
-.archive-years ul, .footer-cats ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+.archive-years ul li, .footer-cats ul li { margin: 0; }
 .archive-years a, .footer-cats a { text-decoration: none; }
 .archive-years a:hover, .footer-cats a:hover { text-decoration: underline; }
 .site-footer .sep { margin: 0 0.4rem; }

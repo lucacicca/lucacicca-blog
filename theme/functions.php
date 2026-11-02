@@ -1,12 +1,12 @@
 <?php
 /**
  * Lucacicca Reader — functions.php
- * Tema minimale per la lettura. Versione: 1.4
+ * Tema minimale per la lettura. Versione: 1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'LCDR_VERSION', '1.4' );
+define( 'LCDR_VERSION', '1.5' );
 
 /* ---- Setup ---- */
 function lcdr_setup() {
@@ -39,7 +39,7 @@ function lcdr_widgets_init() {
 }
 add_action( 'widgets_init', 'lcdr_widgets_init' );
 
-/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.4) ---- */
+/* ---- Stile (unico asset CSS del tema, cache-bust ?ver=1.5) ---- */
 function lcdr_enqueue_style() {
 	wp_enqueue_style( 'lcdr-style', get_stylesheet_uri(), array(), LCDR_VERSION );
 }
@@ -153,8 +153,6 @@ function lcdr_related_posts() {
 		$out  .= '<li><a href="' . esc_url( get_permalink( $p->ID ) ) . '">';
 		if ( $thumb ) {
 			$out .= $thumb;
-		} else {
-			$out .= '<img class="related-nothumb" src="" alt="" style="display:none">';
 		}
 		$out .= '<span class="related-title">' . esc_html( get_the_title( $p->ID ) ) . '</span></a></li>';
 	}
