@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.8] — 2 novembre 2026
+- Header del tema per la preview e un'eventuale pubblicazione: Description riscritta (tema e-reader per blog di lettura, zero JS superfluo, nessuna richiesta esterna) e riga `Tags:` aggiunta (blog, one-column, custom-menu, featured-images, translation-ready). Nessun cambio CSS né funzionale.
+- `LCDR_VERSION` 1.8 (cache-bust allineato). Screenshot `screenshot.png` (1200×900) da caricare via FTP nella cartella del tema.
+
 ## [1.7] — 2 novembre 2026
 - Fix categorie nel footer: le sottocategorie (es. "informazione playlist" figlia di "musica") rompevano il layout perché `wp_list_categories` gerarchico annida le figlie in una ul interna che il flusso orizzontale non gestisce. Ora l'elenco è **piatto** (`hierarchical => false`, ordinamento alfabetico): padri e figlie come voci fratelle, tutte indivisibili su una riga.
 
