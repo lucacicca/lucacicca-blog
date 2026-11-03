@@ -69,18 +69,19 @@ get_header();
 
 				<?php if ( is_singular() ) : ?>
 
-					<?php if ( has_category() || has_tag() ) : ?>
+										<?php if ( has_category() || has_tag() ) : ?>
 						<p class="entry-tax">
 							<?php if ( has_category() ) : ?>
+								<span class="tax-row">
 								<span class="tax-label"><?php _e( 'Categorie:', 'lucacicca-reader' ); ?></span>
 								<?php the_category( ', ' ); ?>
-							<?php endif; ?>
-							<?php if ( has_category() && has_tag() ) : ?>
-								<span class="tax-sep">|</span>
+								</span>
 							<?php endif; ?>
 							<?php if ( has_tag() ) : ?>
+								<span class="tax-row">
 								<span class="tax-label"><?php _e( 'Tag:', 'lucacicca-reader' ); ?></span>
 								<?php the_tags( '', ', ' ); ?>
+								</span>
 							<?php endif; ?>
 						</p>
 					<?php endif; ?>

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.9] — 2 novembre 2026
+- Fix categorie e tag sotto il post: erano su una riga unica separata da "|" e i tag composti da più parole (es. "luca bizzarri") si spezzavano a metà andando a capo, sembrando voci separate. Ora categorie e tag sono su due righe distinte (span .tax-row display:block) e ogni termine è indivisibile (white-space: nowrap sui link): il testo va a capo solo tra un termine e l'altro. Stesso principio dei fix v1.6/v1.7 per il footer. Rimossa la classe .tax-sep ormai inutilizzata.
+- `LCDR_VERSION` 1.9 (cache-bust ?ver=1.9).
+
 ## [1.8] — 2 novembre 2026
 - Header del tema per la preview e un'eventuale pubblicazione: Description riscritta (tema e-reader per blog di lettura, zero JS superfluo, nessuna richiesta esterna) e riga `Tags:` aggiunta (blog, one-column, custom-menu, featured-images, translation-ready). Nessun cambio CSS né funzionale.
 - `LCDR_VERSION` 1.8 (cache-bust allineato). Screenshot `screenshot.png` (1200×900) da caricare via FTP nella cartella del tema.

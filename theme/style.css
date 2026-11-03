@@ -3,7 +3,7 @@ Theme Name: Lucacicca Reader
 Theme URI: https://www.lucacicca.it
 Author: Luca Ciccarelli
 Description: Tema e-reader per blog di lettura: una colonna, tipografia light ad alto contrasto, featured image a piena colonna, miniature in home e archivi, categorie e tag, post correlati con miniatura, dark mode con toggle. Zero JavaScript superfluo, nessuna richiesta esterna.
-Version: 1.8
+Version: 1.9
 License: GNU General Public License v2 or later
 Text Domain: lucacicca-reader
 Tags: blog, one-column, custom-menu, featured-images, translation-ready
@@ -243,10 +243,14 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
   color: var(--fg-soft);
   margin: 0 0 1.5rem;
 }
+/* Categorie su una riga, tag su un'altra: ogni riga e' un blocco */
+.entry-tax .tax-row { display: block; }
+.entry-tax .tax-row + .tax-row { margin-top: 0.15rem; }
 .entry-tax .tax-label { font-weight: 600; color: var(--fg); }
-.entry-tax a { text-decoration: none; }
+/* Ogni termine e' indivisibile: i tag composti da piu' parole (es. "luca bizzarri")
+   vanno a capo SOLO tra un termine e l'altro, mai dentro il nome */
+.entry-tax a { text-decoration: none; white-space: nowrap; }
 .entry-tax a:hover { text-decoration: underline; }
-.entry-tax .tax-sep { margin: 0 0.5rem; color: var(--line); }
 
 /* ============ Post correlati ============ */
 .related-posts { margin: 2rem 0 0; }
