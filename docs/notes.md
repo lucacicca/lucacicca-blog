@@ -9,7 +9,10 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 - Fatto con l'OK di Luca: in GSC rimosse 9 sitemap ridondanti, resta solo `sitemap_index.xml`; avviata la convalida dei 5xx; meta description Yoast scritte su 11 post/pagine con più impressioni; noindex Yoast sui 158 post "links for AAAA-MM-GG" e sui 266 tag con un solo articolo (esclusi primadipartire, x-factor, elisabetta-ballarin, orche, laquila). Sitemap: post 3.226, tag 566 (erano 832). Flush W3TC.
 - Tema 1.10: archivi e ricerca a 20 post per pagina, home invariata a 5 (vedi CHANGELOG). Da caricare via FTP: `functions.php` e `style.css`.
 
+- Collaudo 1.10 da visitatore (dopo il caricamento FTP e il flush W3TC fatti da Luca): `?ver=1.10` ovunque; home 5 post (ultima pagina 677, invariata); /2009/ 20 post, 35 pagine, /2009/page/36/ → 404; mese, categoria e ricerca a 20; tag e post vecchi/recenti ok; feed invariati (10 item); robots invariati (anno noindex, categoria index); toggle dark presente, niente jQuery.
+
 **Decisioni già prese**
+- Interventi diretti di Claude su WordPress (wp-admin, Yoast, W3TC, flush cache compresi): ridurli al minimo e chiedere sempre prima a Luca. Il collaudo da visitatore resta libero.
 - Post "links for" e tag con un solo articolo: noindex.
 - Home a 5 post per pagina (mostra i post interi); archivi e ricerca a 20.
 
@@ -17,6 +20,7 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 - Le impostazioni Yoast dei termini stanno tutte in un'unica opzione (`wpseo_taxonomy_meta`): salvataggi in parallelo si sovrascrivono a vicenda (38 tag erano tornati "default"). Modifiche massive ai termini: una alla volta.
 
 **Aperto**
+- Vecchi embed YouTube in Flash (`<object>`, es. post del gennaio 2009 "Posso parlare con il Signore?") lasciano un riquadro vuoto di ~350px: non dipende dal tema, da valutare con Luca.
 - Tra qualche settimana in GSC: esito della convalida 5xx, andamento dei "non indicizzati", indicizzazione dei post vecchi.
 
 ## 2026-11-19 — Verifica dopo l'aggiornamento a WordPress 7.1.5
