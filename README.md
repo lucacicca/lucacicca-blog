@@ -5,6 +5,7 @@ Sorgenti del tema WordPress del blog personale **[lucacicca.it](https://www.luca
 ## Contenuto
 
 - `theme/` — tema custom **"Lucacicca Reader"**: tema minimale per la lettura, stile e-reader (una colonna, serif, alto contrasto, dark mode con toggle manuale). Zero asset esterni, un solo CSS con cache-busting `?ver=x.y`.
+- `docs/notes.md` — note di sessione (stato, decisioni, cose aperte), voci più recenti in alto.
 - `CHANGELOG.md` — cronologia delle versioni (regola del progetto: ogni modifica al tema = bump di versione nell'header + nota nel changelog + push su questo repo).
 
 ## Convenzioni

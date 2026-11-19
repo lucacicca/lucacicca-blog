@@ -1,0 +1,18 @@
+# Note di sessione — lucacicca.it
+
+Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due voci si contraddicono, vale la più recente.
+
+## 2026-11-19 — Avvio del progetto Claude dedicato
+
+**Stato**
+- Tema "Lucacicca Reader" v1.9 (commit 705c260 del 3/11/2026), rifatto a novembre 2026 con Mistral. `Version:` in `theme/style.css` e `LCDR_VERSION` in `theme/functions.php` sono allineati a 1.9.
+- Deploy via FTP in `wp-content/themes/lucacicca-reader/`; `screenshot.png` (1200×900) caricato a parte, non è nel repo.
+- Plugin tenuti: Akismet, Redirection, Yoast SEO, W3 Total Cache (solo Page Cache, Minify OFF).
+- Nel tema non c'è nessun tracking (né GA né GTM).
+
+**Decisioni già prese**
+- Yoast: "Disabilita gli archivi basati sulla data" OFF. I 301 degli archivi per data verso la home erano di Yoast.
+- Categorie, tag e voci del footer non si spezzano mai: `white-space: nowrap` sui termini, a capo solo tra una voce e l'altra. Categorie del footer in elenco piatto (`hierarchical => false`).
+
+**Aperto**
+- Rimuovere Jetpack e WP Smush (verificare se è già stato fatto).
