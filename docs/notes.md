@@ -2,6 +2,16 @@
 
 Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due voci si contraddicono, vale la più recente.
 
+## 2026-11-19 — Allineamento documentazione
+
+**Stato**
+- README e knowledge del progetto allineati alla verifica plugin qui sotto (elenco plugin attivi; font del tema sans light 300, non serif).
+- Tema invariato: v1.9.
+
+**Aperto**
+- Le istruzioni del progetto Claude citano ancora Redirection (descrizione e "Plugin tenuti"): da correggere a mano da Luca nelle impostazioni del progetto.
+- Facoltativo: nel container GTM-KBLM84 eliminare l'attivatore "utente lucacicca" e le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1`, inutilizzati.
+
 ## 2026-11-19 — Verifica plugin installati
 
 **Stato** (controllato in wp-admin/plugins.php e come visitatore)
