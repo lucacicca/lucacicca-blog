@@ -2,6 +2,12 @@
 
 Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due voci si contraddicono, vale la più recente.
 
+## 2026-11-19 — Tracking e Google Site Kit
+
+**Decisioni già prese**
+- Google Site Kit è tra i plugin tenuti (confermato da Luca). Elenco aggiornato: Akismet, Redirection, Yoast SEO, W3 Total Cache, Google Site Kit.
+- Tracking: Site Kit installa GTM, GA è caricato tramite GTM. Il tema resta senza tracking; nel collaudo da visitatore i tag GTM/GA nell'HTML sono attesi.
+
 ## 2026-11-19 — Avvio del progetto Claude dedicato
 
 **Stato**
