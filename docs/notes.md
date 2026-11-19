@@ -20,7 +20,7 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 - Le impostazioni Yoast dei termini stanno tutte in un'unica opzione (`wpseo_taxonomy_meta`): salvataggi in parallelo si sovrascrivono a vicenda (38 tag erano tornati "default"). Modifiche massive ai termini: una alla volta.
 
 **Aperto**
-- Vecchi embed YouTube in Flash (`<object>`, es. post del gennaio 2009 "Posso parlare con il Signore?") lasciano un riquadro vuoto di ~350px: non dipende dal tema, da valutare con Luca.
+- Video in Flash (`<object>`/`<embed>`) in 352 post su 3.384 (2006-2013, soprattutto 2009-2010): 371 video, di cui YouTube 280 (150 ancora disponibili, 100 rimossi, 28 non incorporabili), Vimeo 12, servizi chiusi ~79. Riquadro vuoto di ~350px. Elenco con clic/impressioni GSC (16 mesi) nel foglio "lucacicca.it — post con video Flash" (https://claude.ai/artifact/UckqZN6Hq1hcKJ7answJTv): solo 34 post hanno impressioni, 7 hanno clic. Luca decide quali sistemare in base al traffico; per i YouTube vivi preferisce il player (iframe), non un link. Nessuna modifica fatta.
 - Tra qualche settimana in GSC: esito della convalida 5xx, andamento dei "non indicizzati", indicizzazione dei post vecchi.
 
 ## 2026-11-19 — Verifica dopo l'aggiornamento a WordPress 7.1.5
