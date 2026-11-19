@@ -9,8 +9,9 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 - Tema v1.9 senza conflitti: home, post recente (/2026/08/ranucci-e-la-vanita/), post del 2004 (/2004/12/inizio/), archivi /2004/ e /2026/, /category/blog/, ricerca e 404 rispondono con lo status giusto, `style.css?ver=1.9`, nessun errore PHP nell'HTML, niente jQuery né emoji, toggle dark mode funzionante, nessun errore in console, nessuno scroll orizzontale a 375px.
 - GTM-KBLM84 presente una volta, dataLayer di GTM4WP presente.
 
-**Aperto**
-- Site Kit carica su ogni pagina "Sign in with Google" (`accounts.google.com/gsi/client` + `sign-in-with-google-*.js`): richiesta esterna non legata al tema né al 7.1.5. Da decidere con Luca se disattivare il modulo in Site Kit.
+**Decisioni già prese**
+- "Sign in with Google" di Site Kit disattivato da Luca (caricava `accounts.google.com/gsi/client` + `sign-in-with-google-*.js` su ogni pagina). Dopo il flush della page cache W3TC verificato da visitatore: script assente su home, post, archivi e categoria; nel frontend resta solo `akismet-frontend.js` sui post con commenti, più GTM.
+- Nota: i risultati di ricerca includono `platform.twitter.com/widgets.js` dagli embed nei testi dei vecchi post (contenuto, non tema).
 
 ## 2026-11-19 — Correzione GTM: l'attivatore "utente lucacicca" è un'eccezione
 
