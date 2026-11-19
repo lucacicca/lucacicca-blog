@@ -2,6 +2,18 @@
 
 Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due voci si contraddicono, vale la più recente.
 
+## 2026-11-19 — Verifica plugin installati
+
+**Stato** (controllato in wp-admin/plugins.php e come visitatore)
+- Plugin attivi: Akismet, Classic Editor, GTM4WP, Really Simple Security, Site Kit by Google, W3 Total Cache, Yoast SEO. Questo elenco sostituisce i precedenti.
+- Jetpack e WP Smush sono già stati rimossi: il punto aperto è chiuso.
+- Redirection non è installato e a Luca non serve.
+- GTM-KBLM84 lo inserisce Site Kit (snippet e noscript), una sola volta. GTM4WP ha "Container placement" su off: non carica GTM, aggiunge solo il dataLayer. Nessun GA caricato a parte.
+
+**Decisioni già prese**
+- GTM4WP si tiene: il container GTM-KBLM84 usa il suo dataLayer. Il tag Google Analytics (G-9LZ2B131VQ) manda `user_id` = `{{DL - visitorId}}` e, tramite la variabile "Event Settings", i parametri `pageTags` (pageAttributes), `pageCategory`, `pagePostType`, `pagePostType2`. Senza GTM4WP arriverebbero vuoti.
+- Nel container l'attivatore "utente lucacicca" (visitorId = 1) non è collegato a nessun tag; le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1` non sono usate.
+
 ## 2026-11-19 — Tracking e Google Site Kit
 
 **Decisioni già prese**
