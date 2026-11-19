@@ -6,7 +6,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'LCDR_VERSION', '1.9' );
+define( 'LCDR_VERSION', '1.10' );
 
 /* ---- Setup ---- */
 function lcdr_setup() {
@@ -110,6 +110,21 @@ function lcdr_excerpt_length() {
 	return 40;
 }
 add_filter( 'excerpt_length', 'lcdr_excerpt_length' );
+
+/* ---- Più post per pagina in archivi e ricerca ----
+ * Archivi (anno, mese, categorie, tag) e ricerca mostrano 20 post invece dei 5
+ * impostati in Lettura: paginazioni quattro volte più corte, così anche i post
+ * vecchi sono a pochi passi per chi legge e per i motori di ricerca.
+ * La home resta al valore di Lettura (5): mostra i post per intero. */
+function lcdr_archive_posts_per_page( $query ) {
+	if ( is_admin() || ! $query->is_main_query() || $query->is_feed() ) {
+		return;
+	}
+	if ( $query->is_archive() || $query->is_search() ) {
+		$query->set( 'posts_per_page', 20 );
+	}
+}
+add_action( 'pre_get_posts', 'lcdr_archive_posts_per_page' );
 
 /* ---- Archivio per anni nel footer ---- */
 function lcdr_footer_years() {

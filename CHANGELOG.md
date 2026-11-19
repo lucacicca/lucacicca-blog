@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.10] — 19 novembre 2026
+- Archivi (anno, mese, categorie, tag) e ricerca mostrano 20 post per pagina invece di 5 (`pre_get_posts` sulla query principale, feed esclusi). Paginazioni quattro volte più corte: es. l'archivio 2009 passa da 139 a 35 pagine, così i post vecchi sono più vicini per lettori e crawler (audit Search Console del 19/11: ~2.000 URL "rilevati ma non indicizzati", soprattutto post 2005-2014 mai scansionati).
+- La home resta a 5 (valore di Impostazioni → Lettura) perché mostra i post per intero: 20 post completi la renderebbero troppo pesante.
+- Le vecchie URL di paginazione oltre la nuova ultima pagina (es. /2009/page/100/) ora rispondono 404: atteso, erano già noindex.
+- `LCDR_VERSION` 1.10 (cache-bust ?ver=1.10).
+
 ## [1.9] — 2 novembre 2026
 - Fix categorie e tag sotto il post: erano su una riga unica separata da "|" e i tag composti da più parole (es. "luca bizzarri") si spezzavano a metà andando a capo, sembrando voci separate. Ora categorie e tag sono su due righe distinte (span .tax-row display:block) e ogni termine è indivisibile (white-space: nowrap sui link): il testo va a capo solo tra un termine e l'altro. Stesso principio dei fix v1.6/v1.7 per il footer. Rimossa la classe .tax-sep ormai inutilizzata.
 - `LCDR_VERSION` 1.9 (cache-bust ?ver=1.9).

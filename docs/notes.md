@@ -2,6 +2,23 @@
 
 Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due voci si contraddicono, vale la più recente.
 
+## 2026-11-19 — Audit Search Console, interventi SEO e tema 1.10
+
+**Stato**
+- Audit GSC (dati al 16/11): 399 pagine indicizzate, ~5.880 no; degli URL in sitemap indicizzati 276 su 4.244. Nessuna azione manuale né problema di sicurezza. ~2.000 "rilevate ma non indicizzate" (soprattutto post 2005-2014 mai scansionati), ~2.900 "scansionate ma non indicizzate" (vecchie pagine allegato, ora in redirect al file, e tag poveri).
+- Fatto con l'OK di Luca: in GSC rimosse 9 sitemap ridondanti, resta solo `sitemap_index.xml`; avviata la convalida dei 5xx; meta description Yoast scritte su 11 post/pagine con più impressioni; noindex Yoast sui 158 post "links for AAAA-MM-GG" e sui 266 tag con un solo articolo (esclusi primadipartire, x-factor, elisabetta-ballarin, orche, laquila). Sitemap: post 3.226, tag 566 (erano 832). Flush W3TC.
+- Tema 1.10: archivi e ricerca a 20 post per pagina, home invariata a 5 (vedi CHANGELOG). Da caricare via FTP: `functions.php` e `style.css`.
+
+**Decisioni già prese**
+- Post "links for" e tag con un solo articolo: noindex.
+- Home a 5 post per pagina (mostra i post interi); archivi e ricerca a 20.
+
+**Attenzione**
+- Le impostazioni Yoast dei termini stanno tutte in un'unica opzione (`wpseo_taxonomy_meta`): salvataggi in parallelo si sovrascrivono a vicenda (38 tag erano tornati "default"). Modifiche massive ai termini: una alla volta.
+
+**Aperto**
+- Tra qualche settimana in GSC: esito della convalida 5xx, andamento dei "non indicizzati", indicizzazione dei post vecchi.
+
 ## 2026-11-19 — Verifica dopo l'aggiornamento a WordPress 7.1.5
 
 **Stato** (collaudo da visitatore, `credentials:'omit'`)
