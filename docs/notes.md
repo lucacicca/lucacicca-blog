@@ -6,6 +6,7 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 
 **Decisioni già prese**
 - L'attivatore "utente lucacicca" (DOM Ready, `DL - visitorId` = 1) è l'**eccezione** (trigger di blocco) del tag Google Analytics: le sessioni di Luca da loggato non vengono registrate in GA. Verificato nel workspace GTM-KBLM84 (Tag → Google Analytics: attivazione DOM Ready, eccezione "utente lucacicca"; 0 modifiche non pubblicate) e nel gtm.js pubblicato (versione 77, regola "block" presente). La voce precedente lo dava per scollegato: era sbagliata.
+- Le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1` restano nel container: a Luca sono servite per dei test. Non sono da pulire.
 - È un motivo in più per tenere GTM4WP: senza il suo dataLayer `visitorId` sarebbe vuoto e l'esclusione non funzionerebbe.
 - Tag nel container: Conversion Linker (All Pages), CookieYes CMP (Consent Initialization), Google Analytics (DOM Ready, eccezione "utente lucacicca").
 
@@ -17,7 +18,6 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 
 **Aperto**
 - Le istruzioni del progetto Claude citano ancora Redirection (descrizione e "Plugin tenuti"): da correggere a mano da Luca nelle impostazioni del progetto.
-- Facoltativo: nel container GTM-KBLM84 eliminare le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1`, inutilizzate (l'attivatore "utente lucacicca" invece serve, vedi voce "Correzione GTM").
 
 ## 2026-11-19 — Verifica plugin installati
 
