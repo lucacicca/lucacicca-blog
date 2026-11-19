@@ -2,6 +2,13 @@
 
 Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due voci si contraddicono, vale la più recente.
 
+## 2026-11-19 — Correzione GTM: l'attivatore "utente lucacicca" è un'eccezione
+
+**Decisioni già prese**
+- L'attivatore "utente lucacicca" (DOM Ready, `DL - visitorId` = 1) è l'**eccezione** (trigger di blocco) del tag Google Analytics: le sessioni di Luca da loggato non vengono registrate in GA. Verificato nel workspace GTM-KBLM84 (Tag → Google Analytics: attivazione DOM Ready, eccezione "utente lucacicca"; 0 modifiche non pubblicate) e nel gtm.js pubblicato (versione 77, regola "block" presente). La voce precedente lo dava per scollegato: era sbagliata.
+- È un motivo in più per tenere GTM4WP: senza il suo dataLayer `visitorId` sarebbe vuoto e l'esclusione non funzionerebbe.
+- Tag nel container: Conversion Linker (All Pages), CookieYes CMP (Consent Initialization), Google Analytics (DOM Ready, eccezione "utente lucacicca").
+
 ## 2026-11-19 — Allineamento documentazione
 
 **Stato**
@@ -10,7 +17,7 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 
 **Aperto**
 - Le istruzioni del progetto Claude citano ancora Redirection (descrizione e "Plugin tenuti"): da correggere a mano da Luca nelle impostazioni del progetto.
-- Facoltativo: nel container GTM-KBLM84 eliminare l'attivatore "utente lucacicca" e le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1`, inutilizzati.
+- Facoltativo: nel container GTM-KBLM84 eliminare le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1`, inutilizzate (l'attivatore "utente lucacicca" invece serve, vedi voce "Correzione GTM").
 
 ## 2026-11-19 — Verifica plugin installati
 
@@ -22,7 +29,7 @@ Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due 
 
 **Decisioni già prese**
 - GTM4WP si tiene: il container GTM-KBLM84 usa il suo dataLayer. Il tag Google Analytics (G-9LZ2B131VQ) manda `user_id` = `{{DL - visitorId}}` e, tramite la variabile "Event Settings", i parametri `pageTags` (pageAttributes), `pageCategory`, `pagePostType`, `pagePostType2`. Senza GTM4WP arriverebbero vuoti.
-- Nel container l'attivatore "utente lucacicca" (visitorId = 1) non è collegato a nessun tag; le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1` non sono usate.
+- ~~Nel container l'attivatore "utente lucacicca" (visitorId = 1) non è collegato a nessun tag~~ — SBAGLIATO, vedi "Correzione GTM". Le variabili `DL - pagePostAuthor` e `DL - transactionProducts.0.metric1` non sono usate.
 
 ## 2026-11-19 — Tracking e Google Site Kit
 
