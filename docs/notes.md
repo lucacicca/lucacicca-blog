@@ -2,6 +2,16 @@
 
 Diario di lavoro per Claude e Luca. Le voci più recenti stanno in alto; se due voci si contraddicono, vale la più recente.
 
+## 2026-11-19 — Verifica dopo l'aggiornamento a WordPress 7.1.5
+
+**Stato** (collaudo da visitatore, `credentials:'omit'`)
+- Core aggiornato a WordPress 7.1.5 (rilascio di sola sicurezza del 18/11/2026, nessuna funzione nuova). Il tema non usa blocchi né API toccate dal rilascio.
+- Tema v1.9 senza conflitti: home, post recente (/2026/08/ranucci-e-la-vanita/), post del 2004 (/2004/12/inizio/), archivi /2004/ e /2026/, /category/blog/, ricerca e 404 rispondono con lo status giusto, `style.css?ver=1.9`, nessun errore PHP nell'HTML, niente jQuery né emoji, toggle dark mode funzionante, nessun errore in console, nessuno scroll orizzontale a 375px.
+- GTM-KBLM84 presente una volta, dataLayer di GTM4WP presente.
+
+**Aperto**
+- Site Kit carica su ogni pagina "Sign in with Google" (`accounts.google.com/gsi/client` + `sign-in-with-google-*.js`): richiesta esterna non legata al tema né al 7.1.5. Da decidere con Luca se disattivare il modulo in Site Kit.
+
 ## 2026-11-19 — Correzione GTM: l'attivatore "utente lucacicca" è un'eccezione
 
 **Decisioni già prese**
